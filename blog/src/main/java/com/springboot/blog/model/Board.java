@@ -14,7 +14,17 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
-@Entity
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity //  ORM 클래스다. 데이터베이스에 매핑을 해주는 클래스란 어노테이션
 public class Board {
 	
 	@Id
