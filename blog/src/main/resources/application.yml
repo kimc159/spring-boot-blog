@@ -1,14 +1,37 @@
 server:
-    address: localhost
-    port: 8080
+  port: 8000
+  servlet:
+    context-path: /blog
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+    
 spring:
-    datasource:
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Seoul
-        username: cos
-        password: cos1234
-    jpa:
-        database: mysql
-        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-        generate-ddl: true
-        show-sql: true
+  mvc:
+    view:  
+      #컨트롤러가 리턴할 때 앞에 붙여주는것
+      prefix: /WEB-INF/views/ 
+      #컨트롤러가 리턴할 때 뒤에 붙여주는것  
+      suffix: .jsp
+      
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Seoul
+    username: cos
+    password: cos1234
+    
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      use-new-id-generator-mappings: false
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
