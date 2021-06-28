@@ -1,15 +1,18 @@
 package com.springboot.blog.model;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
@@ -40,9 +43,12 @@ public class Board {
 	@ColumnDefault("0")
 	private int count; // 조회수
 	
-	@ManyToOne // Many = Board, User = One 한명의 유저는 여러개의 글을 쓸수 있다는 뜻
+	@ManyToOne(fetch = FetchType.EAGER) // Many = Board, User = One 한명의 유저는 여러개의 글을 쓸수 있다는 뜻, fetch = FetchType.EAGER는 user FK는 한건이니까 무조건 가져올게 라는 뜻
 	@JoinColumn(name="userId") // DB에 userId라는 컬럼으로 들어간다.
 	private User user; // DB는 오브젝트를 저장할 수 없다. 그래서 FK를 사용, 자바는 오브젝트를 저장할 수 있다. -> 실제로 User객체로 만들게 되면 DB에는 FK로 들어감
+	
+	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER) // mappedBy 연관관계의 주인이 아니다(난 FK가 아니다) DB에 컬럼을 만들지 말라, fetch = FetchType.LAZY는 필요할때 가져오겠다.
+	private List<Reply> reply;
 	
 	@CreationTimestamp
 	private Timestamp createDate;
