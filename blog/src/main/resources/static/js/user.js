@@ -33,7 +33,7 @@ let index = {
 		*/
 		$.ajax(
 			{
-				url: '/blog/api/user',
+				url: '/api/user',
 				data: JSON.stringify(userData), // http body 데이터
 				contentType: 'application/json; charset=utf-8', // body 데이터가 어떤 타입인지(MIME)
 				dataType: 'json',               // 응답된 데이터 타입, 기본적으로 모두 문자열인데 (생긴게 json이면) => javascript에서 오브젝트로 변환
@@ -71,7 +71,7 @@ let index = {
 		*/
 		$.ajax(
 			{
-				url: '/blog/api/user/login',
+				url: '/api/user/login',
 				data: JSON.stringify(userData), // http body 데이터
 				contentType: 'application/json; charset=utf-8', // body 데이터가 어떤 타입인지(MIME)
 				dataType: 'json',               // 응답된 데이터 타입, 기본적으로 모두 문자열인데 (생긴게 json이면) => javascript에서 오브젝트로 변환
