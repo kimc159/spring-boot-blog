@@ -19,7 +19,7 @@ public class UserApiController {
 	@Autowired
 	private UserService userService;
 	
-	@PostMapping("/api/user")
+	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody User user) {
 		
 		user.setRole(RoleType.USER);
@@ -29,15 +29,4 @@ public class UserApiController {
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), result); 
 	}
 	
-//	@PostMapping("/api/user/login") 
-//	public ResponseDto<Integer> login(@RequestBody User user, HttpSession session) { 
-//		System.out.println("login controller");
-//		User principal = userService.로그인(user);
-//		
-//		if(principal != null) {
-//			session.setAttribute("principal", principal);
-//		}
-//		
-//		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
-//	}
 }
