@@ -21,14 +21,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+			.csrf().disable() // csrf 토큰 비활성화 (테스트시 걸어두는게 좋음)
 			.authorizeRequests() // request가 들어오면
-				.antMatchers("/auth/**") 
-				.permitAll()// 누구나 들어올 수 있다.
+				.antMatchers("/", "/auth/**", "/js/**", "/css/**", "/images/**")  
+				.permitAll()// 누구나 들어올 수 있다. 
 				.anyRequest() // 이게 아닌 다른 요청은
 				.authenticated() // 인증이 되야됨
 			.and()
 				.formLogin()
-				.loginPage("/auth/loginForm"); 
+				.loginPage("/auth/loginForm");  
 		
 	}
 }
