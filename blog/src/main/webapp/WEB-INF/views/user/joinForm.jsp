@@ -4,7 +4,7 @@
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 
 <div class="container">
-	<form action="/action_page.php">
+	<form>
 	
 		<div class="form-group">
 			<label for="username">username </label> <input type="text"
@@ -18,7 +18,7 @@
 		
 		<div class="form-group">
 			<label for="email">Email </label> <input type="email"
-				class="form-control" placeholder="Enter email" id="email"> 
+				class="form-control" placeholder="Enter email" id="email">  
 		</div>
 		
 		
