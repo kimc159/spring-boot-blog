@@ -22,9 +22,8 @@ public class UserApiController {
 	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody User user) {
 		
-		user.setRole(RoleType.USER);
 		int result = userService.회원가입(user); 
-		
+		 
 		// 실제 DB에서 insert하고 아래에서 return 
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), result); 
 	}
