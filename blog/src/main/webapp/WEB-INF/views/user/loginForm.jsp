@@ -4,26 +4,23 @@
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 
 <div class="container">
-	<form>
+	<form action="#" method="post">
 	
 		<div class="form-group">
-			<label for="username">username </label> <input type="text"
+			<label for="username">username </label> <input  type="text"  name="username"
 				class="form-control" placeholder="Enter username" id="username"> 
 		</div>
 		
 		<div class="form-group">
-			<label for="password">Password</label> <input type="password"
-				class="form-control" placeholder="Enter password" id="password">
+			<label for="password">Password</label> <input type="password"  name="password" class="form-control" placeholder="Enter password" id="password">
 		</div>
 		
 		<div class="form-group form-check">
-			<label class="form-check-label"> <input  
-				class="form-check-input" type="checkbox"> Remember me
+			<label class="form-check-label"> <input class="form-check-input"  name="remember" type="checkbox"> Remember me
 			</label>
 		</div>
+		<button type="submit" id="btn-login" class="btn btn-primary">로그인</button>
 		
 	</form>
-		<button id="btn-login" class="btn btn-primary">로그인</button>
 </div>
-<script src="/js/user.js" ></script>
 <%@ include file="/WEB-INF/views/layout/footer.jsp"%>
