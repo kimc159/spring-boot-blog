@@ -40,7 +40,7 @@ let index = {
 				method: 'post',
 				success: function(res) {
 					alert("회원가입이 완료되었습니다.");
-					location.href = "/blog";
+					location.href = "/";
 					console.log(res);
 				},
 				error: function(xhr, status, error) {
@@ -76,12 +76,15 @@ let index = {
 				contentType: 'application/json; charset=utf-8', // body 데이터가 어떤 타입인지(MIME)
 				dataType: 'json',               // 응답된 데이터 타입, 기본적으로 모두 문자열인데 (생긴게 json이면) => javascript에서 오브젝트로 변환
 				method: 'post',
-				success: function(res) {
-					alert("로그인이 완료되었습니다.");
-					location.href = "/blog";
-					console.log(res);
+				success: function(res) { 
+					if(res.data == 1) {
+						alert("로그인이 완료되었습니다.");
+						location.href = "/"; 
+					} else {
+						alert("아이디와 비밀번호가 일치하지 않습니다.");
+					}
 				},
-				error: function(xhr, status, error) {
+				error: function(xhr, status, error) { 
 					console.log(xhr.status);           // 에러코드(404, 500 등)
 					console.log(xhr.responseText); // html 포맷의 에러 메시지
 					console.log(status);                // 'error'
